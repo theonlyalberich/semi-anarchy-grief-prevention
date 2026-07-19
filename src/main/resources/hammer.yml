@@ -1,0 +1,2 @@
+ban_message: "%target% has been struck down by %player% using %item_name%"
+default_name: "BanHammer"

@@ -1,0 +1,175 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+         http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- Only change these per project -->
+    <groupId>com.example</groupId>
+    <artifactId>WonderProject</artifactId>
+    <version>0.0.1</version>
+    <packaging>jar</packaging>
+
+    <!-- Dynamic metadata -->
+    <name>${project.artifactId}</name>
+    <description>${project.artifactId} plugin project</description>
+    <url>https://example.com/${project.artifactId}</url>
+
+    <properties>
+        <java.version>25</java.version>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <maven.build.timestamp.format>yyyyMMdd-HHmmss</maven.build.timestamp.format>
+        <state>work</state> <!-- save/work -->
+    </properties>
+
+    <repositories>
+        <repository>
+            <id>papermc</id>
+            <url>https://repo.papermc.io/repository/maven-public/</url>
+        </repository>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+        <repository>
+            <id>playpro</id>
+            <url>https://maven.playpro.com</url>
+        </repository>
+    </repositories>
+
+    <dependencies>
+        <!-- Paper API build -->
+        <dependency>
+            <groupId>io.papermc.paper</groupId>
+            <artifactId>paper-api</artifactId>
+            <version>26.1.2.build.52-beta</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- JetBrains annotations -->
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>26.0.2</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- GriefPrevention -->
+        <dependency>
+            <groupId>com.github.GriefPrevention</groupId>
+            <artifactId>GriefPrevention</artifactId>
+            <version>16.18.2</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- CoreProtect API -->
+        <dependency>
+            <groupId>net.coreprotect</groupId>
+            <artifactId>coreprotect</artifactId>
+            <version>24.0</version>
+            <scope>system</scope>
+            <systemPath>C:/Users/<your-username>/Downloads/CoreProtect-24.0.jar</systemPath>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <!-- JAR name will be artifactId -->
+        <finalName>${project.artifactId}</finalName>
+
+        <plugins>
+            <!-- Compiler plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.11.0</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+
+            <!-- Jar plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.3.0</version>
+                <configuration>
+                    <archive>
+                        <addMavenDescriptor>true</addMavenDescriptor>
+                    </archive>
+                </configuration>
+            </plugin>
+
+            <!-- AntRun plugin: zip entire project excluding target and zips -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <id>zip-project</id>
+                        <phase>package</phase>
+                        <configuration>
+                            <target>
+                                <zip destfile="${project.basedir}/${project.artifactId}-${project.version}.${maven.build.timestamp}.zip">
+                                    <fileset dir="${project.basedir}">
+                                        <exclude name="target/**"/>
+                                        <exclude name="*.zip"/>
+                                    </fileset>
+                                </zip>
+                            </target>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>save</id>
+            <activation>
+                <!-- Always active by default -->
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-antrun-plugin</artifactId>
+                        <version>3.1.0</version>
+                        <executions>
+                            <execution>
+                                <id>copy-to-external</id>
+                                <phase>package</phase>
+                                <configuration>
+                                    <target>
+                                        <!-- Copy JAR to plugins folder -->
+                                        <copy file="${project.build.directory}/${project.build.finalName}.jar"
+                                              todir="C:/files/plugins"
+                                              overwrite="true"/>
+
+                                        <!-- Copy ZIP to source/<artifactId> folder -->
+                                        <mkdir dir="C:/source/${project.artifactId}"/>
+                                        <copy file="${project.basedir}/${project.artifactId}-${project.version}.${maven.build.timestamp}.zip"
+                                              todir="C:/source/${project.artifactId}"
+                                              overwrite="true"/>
+                                    </target>
+                                </configuration>
+                                <goals>
+                                    <goal>run</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+</project>

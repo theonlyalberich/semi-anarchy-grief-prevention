@@ -1,0 +1,43 @@
+modules:
+  owner: #node (wp.owner)
+    enabled: true
+
+  spawner: #node admin->(wp.spnr.admin)
+    #node staff->(wp.spnr)
+    enabled: true
+
+  cnkboarder: # no perms required
+    enabled: true
+
+  creepercontrol: #node admin->(wp.creep)
+    enabled: true
+
+  headfarm: #for charged creeper logic
+    enabled: true
+
+  statues: # statue management system
+    enabled: true
+
+    #filebridge: # file sync and download system
+    # enabled: true
+
+  anvilwatch: # anvil rename logging and banning system
+    enabled: true
+
+  # chunki: # chunk entity limits and cleanup system
+  #  enabled: true
+
+  coremenus:
+    enabled: true
+
+  banhammer:
+    enabled: true
+
+  itemfinder: # find items in chests and shulker boxes
+    enabled: true
+
+  follower:
+    enabled: true
+
+  pumpkening: # boss trigger system (/boss <name>)
+    enabled: true

@@ -1,0 +1,18 @@
+# Follower Module Configuration
+
+# List of allowed models from BetterModel
+allowed-models:
+  - allay_gold
+  - allay_amethyst
+  - allay_custom
+  - pump
+  - dodo
+
+# Follower behavior settings
+behavior:
+  follow-distance: 2.0
+  follow-speed: 0.08
+  stop-distance: 0.3
+  # Position offset from player (right-side offset height)
+  offset-right: 1.5
+  offset-height: 1.3

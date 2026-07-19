@@ -1,0 +1,126 @@
+/*
+ * This source file is part of BetterModel.
+ * Copyright (c) 2026 toxicity188
+ * Licensed under the MIT License.
+ * See LICENSE.md file for full license text.
+ */
+
+package kr.toxicity.model.bukkit.compatibility.mythicmobs
+
+import io.lumine.mythic.api.adapters.AbstractEntity
+import io.lumine.mythic.api.config.MythicLineConfig
+import io.lumine.mythic.api.skills.SkillMetadata
+import io.lumine.mythic.core.skills.placeholders.PlaceholderContext
+import kr.toxicity.model.api.util.function.BonePredicate
+import kr.toxicity.model.bukkit.util.toRegistry
+import kr.toxicity.model.bukkit.util.toTracker
+import kr.toxicity.model.util.boneName
+import kr.toxicity.model.util.toPackName
+
+val MM_MODEL_ID = arrayOf("mid", "m", "model")
+val MM_PART_ID = arrayOf("partid", "p", "pid", "part")
+val MM_CHILDREN = arrayOf("children", "child")
+val MM_EXACT_MATCH = arrayOf("exactmatch", "em", "exact", "match")
+val MM_SEAT = arrayOf("seat", "p", "pbone")
+
+fun SkillMetadata.toRegistry() = caster.entity.toRegistry()
+fun SkillMetadata.toTracker(model: String?) = caster.entity.toTracker(model)
+fun AbstractEntity.toTracker(model: String?) = bukkitEntity.toTracker(model)
+fun AbstractEntity.toRegistry() = bukkitEntity.toRegistry()
+
+fun MythicLineConfig.toPlaceholderString(array: Array<String>, defaultValue: String? = null) = toPlaceholderString(array, defaultValue) { it }
+fun <T> MythicLineConfig.toPlaceholderStringList(array: Array<String>, mapper: (List<String>) -> T) = toPlaceholderString(array) {
+    mapper(it?.split(",") ?: emptyList())
+}
+fun <T> MythicLineConfig.toPlaceholderString(array: Array<String>, defaultValue: String? = null, mapper: (String?) -> T): (PlaceholderContext) -> T {
+    return getPlaceholderString(array, defaultValue)?.let {
+        { meta ->
+            mapper(it.get(meta))
+        }
+    } ?: mapper(null).let { mapped ->
+        {
+            mapped
+        }
+    }
+}
+fun MythicLineConfig.toPlaceholderInteger(array: Array<String>, defaultValue: Int = 0) = toPlaceholderInteger(array, defaultValue) { it ?: defaultValue }
+fun MythicLineConfig.toNullablePlaceholderInteger(array: Array<String>) = toPlaceholderInteger(array, null) { it }
+fun <T> MythicLineConfig.toPlaceholderInteger(array: Array<String>, defaultValue: Int? = null, mapper: (Int?) -> T): (PlaceholderContext) -> T {
+    return getPlaceholderInteger(array, defaultValue?.toString())?.let {
+        { meta ->
+            mapper(it.get(meta))
+        }
+    } ?: mapper(null).let { mapped ->
+        {
+            mapped
+        }
+    }
+}
+fun MythicLineConfig.toPlaceholderFloat(array: Array<String>, defaultValue: Float = 0F) = toPlaceholderFloat(array, defaultValue) { it ?: defaultValue }
+fun MythicLineConfig.toNullablePlaceholderFloat(array: Array<String>) = toPlaceholderFloat(array, null) { it }
+fun <T> MythicLineConfig.toPlaceholderFloat(array: Array<String>, defaultValue: Float? = null, mapper: (Float?) -> T): (PlaceholderContext) -> T {
+    return getPlaceholderFloat(array, defaultValue?.toString())?.let {
+        { meta ->
+            mapper(it.get(meta))
+        }
+    } ?: mapper(null).let { mapped ->
+        {
+            mapped
+        }
+    }
+}
+fun MythicLineConfig.toPlaceholderBoolean(array: Array<String>, defaultValue: Boolean? = null) = toPlaceholderBoolean(array, defaultValue) { it == true }
+fun MythicLineConfig.toNullablePlaceholderBoolean(array: Array<String>, defaultValue: Boolean? = null) = toPlaceholderBoolean(array, defaultValue) { it }
+fun <T> MythicLineConfig.toPlaceholderBoolean(array: Array<String>, defaultValue: Boolean? = null, mapper: (Boolean?) -> T): (PlaceholderContext) -> T {
+    return getPlaceholderBoolean(array, defaultValue)?.let {
+        { meta ->
+            mapper(it.get(meta))
+        }
+    } ?: mapper(null).let { mapped ->
+        {
+            mapped
+        }
+    }
+}
+fun MythicLineConfig.toPlaceholderColor(array: Array<String>, defaultValue: String = "FFFFFF") = toPlaceholderColor(array, defaultValue) { it }
+fun <T> MythicLineConfig.toPlaceholderColor(array: Array<String>, defaultValue: String = "FFFFFF", mapper: (Int?) -> T): (PlaceholderContext) -> T {
+    return toPlaceholderString(array, defaultValue) {
+        mapper(it?.toIntOrNull(16))
+    }
+}
+
+val MythicLineConfig.bonePredicateNullable
+    get() = toBonePredicate(BonePredicate.TRUE)
+val MythicLineConfig.bonePredicate
+    get() = toBonePredicate(BonePredicate.FALSE)
+
+val MythicLineConfig.modelPlaceholder
+    get() = toPlaceholderString(MM_MODEL_ID) {
+        it?.toPackName()
+    }
+
+fun MythicLineConfig.toBonePredicate(defaultPredicate: BonePredicate): (PlaceholderContext) -> BonePredicate {
+    val match = toPlaceholderBoolean(MM_EXACT_MATCH, true)
+    val children = toPlaceholderBoolean(MM_CHILDREN, false)
+    val partSupplier = toPlaceholderString(MM_PART_ID) {
+        it?.boneName?.name
+    }
+    return { meta ->
+        val part = partSupplier(meta)
+        if (part == null) defaultPredicate else {
+            BonePredicate.of(if (children(meta)) BonePredicate.State.TRUE else BonePredicate.State.FALSE, if (match(meta)) {
+                { b ->
+                    b.name().name == part
+                }
+            } else {
+                { b ->
+                    b.name().name.contains(part, ignoreCase = true)
+                }
+            })
+        }
+    }
+}
+
+fun SkillMetadata.toPlaceholderArgs(): PlaceholderContext = PlaceholderContext.builder().meta(this).build()
+fun AbstractEntity.toPlaceholderArgs(): PlaceholderContext = PlaceholderContext.builder().entity(this).build()
+fun toPlaceholderArgs(meta: SkillMetadata, target: AbstractEntity): PlaceholderContext = PlaceholderContext.builder().meta(meta).entity(target).build()
