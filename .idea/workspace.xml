@@ -4,7 +4,235 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bb70933d-8524-4f2c-86a0-05474b079b9a" name="Changes" comment="" />
+    <list default="true" id="bb70933d-8524-4f2c-86a0-05474b079b9a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/contentpackages/premade/IronLeagueArena.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/contentpackages/premade/KnightCastleLair.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/contentpackages/premade/PrimisAdventure.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/contentpackages/premade/TheClimbDungeon.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/contentpackages/premade/TheMinesDungeon.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/contentpackages/premade/TheNetherWastes.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/contentpackages/premade/ThePalaceSanctum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/contentpackages/premade/UnderGroveLair.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/contentpackages/premade/YggdrasilRealm.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/enchantments/EnchantmentsConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/enchantments/EnchantmentsConfigFields.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/enchantments/premade/AquaAffinityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/enchantments/premade/BaneOfArthropodsConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/enchantments/premade/BindingCurseConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/enchantments/premade/BlastProtectionConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/enchantments/premade/ChannelingConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/enchantments/premade/CriticalStrikesConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/enchantments/premade/DepthStriderConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/enchantments/premade/DrillingConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/enchantments/premade/EarthquakeConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/enchantments/premade/EfficiencyConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/enchantments/premade/EnchantedSourceConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/enchantments/premade/FeatherFallingConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/enchantments/premade/FireAspectConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/enchantments/premade/FireProtectionConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/enchantments/premade/FlamethrowerConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/enchantments/premade/FrostWalkerConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/enchantments/premade/GrapplingHookConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/enchantments/premade/IceBreakerConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/enchantments/premade/ImpalingConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/enchantments/premade/InfinityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/enchantments/premade/KnockbackConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/enchantments/premade/LightningConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/enchantments/premade/LoudStrikesConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/enchantments/premade/LuckOfTheSeaConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/enchantments/premade/LuckySourceConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/enchantments/premade/MeteorShowerConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/enchantments/premade/MultishotConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/enchantments/premade/PiercingConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/enchantments/premade/PlasmaBootsConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/enchantments/premade/ProjectileProtectionConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/enchantments/premade/ProtectionConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/enchantments/premade/QuickChargeConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/enchantments/premade/RespirationConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/enchantments/premade/SharpnessConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/enchantments/premade/SilkTouchConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/enchantments/premade/SoulSpeedConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/enchantments/premade/SoulbindConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/enchantments/premade/SummonMerchantConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/enchantments/premade/SummonWolfConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/enchantments/premade/SweepingEdgeConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/enchantments/premade/SwiftSneakConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/enchantments/premade/UnbreakingConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/enchantments/premade/VanishingCurseConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/enchantments/premade/WindBurstConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/mobproperties/MobPropertiesConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/mobproperties/MobPropertiesConfigFields.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/mobproperties/premade/EliteBeeConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/mobproperties/premade/EliteBlazeConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/mobproperties/premade/EliteBoggedConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/mobproperties/premade/EliteBreezeConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/mobproperties/premade/EliteCaveSpiderConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/mobproperties/premade/EliteCreeperConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/mobproperties/premade/EliteDrownedConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/mobproperties/premade/EliteElderGuardianConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/mobproperties/premade/EliteEnderDragon.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/mobproperties/premade/EliteEndermanConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/mobproperties/premade/EliteEndermiteConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/mobproperties/premade/EliteEvokerConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/mobproperties/premade/EliteGhastConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/mobproperties/premade/EliteGoatConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/mobproperties/premade/EliteGuardianConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/mobproperties/premade/EliteHoglinConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/mobproperties/premade/EliteHuskConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/mobproperties/premade/EliteIllusionerConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/mobproperties/premade/EliteIronGolemConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/mobproperties/premade/EliteKillerBunnyConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/mobproperties/premade/EliteLlamaConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/mobproperties/premade/EliteMagmaCubeConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/mobproperties/premade/ElitePhantomConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/mobproperties/premade/ElitePiglinBruteConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/mobproperties/premade/ElitePiglinConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/mobproperties/premade/ElitePillagerConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/mobproperties/premade/ElitePolarBearConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/mobproperties/premade/EliteRavagerConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/mobproperties/premade/EliteShulkerConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/mobproperties/premade/EliteSilverfishConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/mobproperties/premade/EliteSkeletonConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/mobproperties/premade/EliteSlimeConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/mobproperties/premade/EliteSpiderConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/mobproperties/premade/EliteStrayConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/mobproperties/premade/EliteVexConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/mobproperties/premade/EliteVindicatorConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/mobproperties/premade/EliteWardenConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/mobproperties/premade/EliteWitchConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/mobproperties/premade/EliteWitherConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/mobproperties/premade/EliteWitherSkeletonConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/mobproperties/premade/EliteWolfConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/mobproperties/premade/EliteZoglinConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/mobproperties/premade/EliteZombieConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/mobproperties/premade/EliteZombiefiedPiglin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/potioneffects/premade/AbsorptionConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/potioneffects/premade/BlindnessConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/potioneffects/premade/ConduitPowerConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/potioneffects/premade/DarknessConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/potioneffects/premade/DolphinsGraceConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/potioneffects/premade/FireResistanceConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/potioneffects/premade/GlowingConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/potioneffects/premade/HasteConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/potioneffects/premade/HealthBoostConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/potioneffects/premade/HungerConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/potioneffects/premade/InfestedConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/potioneffects/premade/InstantDamageConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/potioneffects/premade/InstantHealthConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/potioneffects/premade/InvisibilityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/potioneffects/premade/JumpBoostConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/potioneffects/premade/LevitationConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/potioneffects/premade/LuckConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/potioneffects/premade/MiningFatigueConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/potioneffects/premade/NauseaConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/potioneffects/premade/NightVisionConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/potioneffects/premade/OozingConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/potioneffects/premade/PoisonConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/potioneffects/premade/RaidOmenConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/potioneffects/premade/RegenerationConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/potioneffects/premade/ResistanceConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/potioneffects/premade/SaturationConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/potioneffects/premade/SlowFallingConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/potioneffects/premade/SlownessConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/potioneffects/premade/SpeedConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/potioneffects/premade/StrengthConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/potioneffects/premade/TrialOmenConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/potioneffects/premade/UnluckConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/potioneffects/premade/WeaknessConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/potioneffects/premade/WeavingConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/potioneffects/premade/WindChargedConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/potioneffects/premade/WitherConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/SkillBonusConfigFields.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/SkillBonusesConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/ArmorAdrenalineSurgeConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/ArmorBattleHardenedConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/ArmorEvasionConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/ArmorFortifyConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/ArmorGritConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/ArmorIronStanceConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/ArmorLastStandConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/ArmorReactiveShieldingConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/ArmorRetaliationConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/ArmorSecondWindConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/AxesDevastatingBlowConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/AxesExecutionerConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/AxesMomentumConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/AxesStaggerConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/AxesTimberConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/AxesWoundConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/BowsBarrageConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/BowsDeadEyeConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/BowsFrostbiteConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/BowsHuntersMarkConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/BowsMultishotConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/BowsOverdrawConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/BowsPackHunterConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/BowsRangersFocusConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/BowsRicochetConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/BowsWindRunnerConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/CrossbowsArrowRainConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/CrossbowsExplosiveTipConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/CrossbowsFirstBloodConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/CrossbowsHeavyBoltsConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/CrossbowsHuntersPreyConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/CrossbowsQuickReloadConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/CrossbowsSteadyAimConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/CrossbowsSuppressingFireConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/HoesDeathMarkConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/HoesDeathsEmbraceConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/HoesGrimReachConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/HoesHarvesterConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/HoesReapWhatYouSowConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/HoesReapersHarvestConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/HoesScytheSweepConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/HoesSoulDrainConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/HoesSoulSiphonConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/HoesSpectralScytheConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/MacesAvatarOfJudgmentConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/MacesConcussionConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/MacesConsecrationConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/MacesCrushingBlowConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/MacesDivineShieldConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/MacesHammerOfWrathConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/MacesJudgmentConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/MacesRighteousFuryConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/MacesShatterConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/MacesStunningForceConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/SpearsFirstStrikeConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/SpearsImpalerConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/SpearsImpalingStrikeConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/SpearsLegionsDisciplineConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/SpearsLongReachConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/SpearsPhalanxConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/SpearsPolearmMasteryConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/SpearsPrecisionThrustConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/SpearsVanguardConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/SpearsVortexThrustConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/SwordsDuelistConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/SwordsExposeWeaknessConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/SwordsFinishingFlourishConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/SwordsFlurryConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/SwordsLacerateConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/SwordsParryConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/SwordsPoiseConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/SwordsRiposteConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/SwordsSwiftStrikesConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/SwordsVorpalStrikeConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/TridentsDepthChargeConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/TridentsImpaleConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/TridentsLeviathanWrathConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/TridentsPoseidonsFavorConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/TridentsReturningHasteConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/TridentsRiptideMasteryConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/TridentsSnareConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/TridentsStormCallerConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/TridentsTidalSurgeConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/skillbonuses/premade/TridentsUndertowConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/translations/TranslationCsvParser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/translations/TranslationsConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/externals/EliteMobs-master/EliteMobs-master/src/main/java/com/magmaguy/elitemobs/config/translations/TranslationsConfigFields.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -50,6 +278,43 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;alberich-png&quot;
+  }
+}</component>
+  <component name="GitToolBoxStore">
+    <option name="recentBranches">
+      <RecentBranches>
+        <option name="branchesForRepo">
+          <list>
+            <RecentBranchesForRepo>
+              <option name="branches">
+                <list>
+                  <RecentBranch>
+                    <option name="branchName" value="main" />
+                    <option name="lastUsedInstant" value="1784926133" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="master" />
+                    <option name="lastUsedInstant" value="1784926132" />
+                  </RecentBranch>
+                </list>
+              </option>
+              <option name="repositoryRootUrl" value="file://$PROJECT_DIR$" />
+            </RecentBranchesForRepo>
+          </list>
+        </option>
+      </RecentBranches>
+    </option>
+  </component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;git@github.com:alberich-png/wonderplugin.git&quot;,
+    &quot;accountId&quot;: &quot;3131be44-6eee-4d39-bfb2-06610a3aae5f&quot;
+  }
+}</component>
   <component name="MavenImportPreferences">
     <option name="explicitlyDisabledProfiles" value="save" />
   </component>
@@ -80,7 +345,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "junie.onboarding.icon.badge.shown": "true",
     "kotlin-language-version-configured": "true",
