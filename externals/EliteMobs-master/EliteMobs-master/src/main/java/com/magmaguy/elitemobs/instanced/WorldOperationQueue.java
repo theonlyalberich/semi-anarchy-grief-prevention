@@ -1,0 +1,166 @@
+package com.magmaguy.elitemobs.instanced;
+
+import com.magmaguy.elitemobs.MetadataHandler;
+import com.magmaguy.elitemobs.config.DungeonsConfig;
+import com.magmaguy.magmacore.util.Logger;
+import org.bukkit.entity.Player;
+import org.bukkit.scheduler.BukkitRunnable;
+
+import java.util.Queue;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.function.Supplier;
+
+/**
+ * Manages world operations (cloning, loading, unloading) in a queue to prevent
+ * concurrent operations that can cause server crashes or performance issues.
+ */
+public class WorldOperationQueue {
+
+    private static final Queue<WorldOperation> operationQueue = new ConcurrentLinkedQueue<>();
+    private static final AtomicBoolean isProcessing = new AtomicBoolean(false);
+    private static final AtomicInteger operationGeneration = new AtomicInteger(0);
+
+    /**
+     * Queues a world operation for execution.
+     *
+     * @param player          The player initiating the operation (for feedback)
+     * @param asyncOperation  The async operation (e.g., file cloning) - runs off main thread
+     * @param syncOperation   The sync operation (e.g., world loading) - runs on main thread after async completes
+     * @param operationName   Human-readable name for feedback messages
+     */
+    public static void queueOperation(Player player,
+                                       Supplier<Boolean> asyncOperation,
+                                       Runnable syncOperation,
+                                       String operationName) {
+        WorldOperation operation = new WorldOperation(player, asyncOperation, syncOperation, operationName, operationGeneration.get());
+        operationQueue.add(operation);
+
+        int queuePosition = operationQueue.size();
+        if (queuePosition > 1) {
+            player.sendMessage(DungeonsConfig.getDungeonPreparingQueueMessage().replace("$position", String.valueOf(queuePosition)));
+        } else {
+            player.sendMessage(DungeonsConfig.getDungeonPreparingMessage());
+        }
+
+        processNextOperation();
+    }
+
+    private static void processNextOperation() {
+        if (!isProcessing.compareAndSet(false, true)) {
+            return; // Another operation is already processing
+        }
+
+        WorldOperation operation = operationQueue.poll();
+        if (operation == null) {
+            isProcessing.set(false);
+            return;
+        }
+
+        // Notify queued players of updated positions
+        notifyQueuePositions();
+
+        // Run async operation first
+        CompletableFuture.supplyAsync(() -> {
+            try {
+                return operation.asyncOperation.get();
+            } catch (Exception e) {
+                Logger.warn("World operation failed during async phase: " + e.getMessage());
+                e.printStackTrace();
+                return false;
+            }
+        }).thenAccept(success -> {
+            if (operation.generation != operationGeneration.get() || MetadataHandler.shutdownRequested) {
+                //Do NOT release isProcessing here: a generation mismatch means this is a stale operation from a
+                //previous plugin lifecycle (a reload bumped the generation). A newer-lifecycle operation may
+                //currently own the processing slot, so clearing the flag would let a second world clone run
+                //concurrently. shutdown() owns resetting isProcessing.
+                return;
+            }
+
+            if (!success) {
+                if (operation.player.isOnline()) {
+                    operation.player.sendMessage(DungeonsConfig.getDungeonPrepareFailedMessage());
+                }
+                isProcessing.set(false);
+                processNextOperation();
+                return;
+            }
+
+            // Run sync operation on main thread
+            new BukkitRunnable() {
+                @Override
+                public void run() {
+                    if (operation.generation != operationGeneration.get() || MetadataHandler.shutdownRequested) {
+                        //Stale operation from a previous lifecycle: do not touch isProcessing (a newer operation
+                        //may own it). shutdown() already reset the flag for the old lifecycle.
+                        return;
+                    }
+                    try {
+                        operation.syncOperation.run();
+                    } catch (Exception e) {
+                        Logger.warn("World operation failed during sync phase: " + e.getMessage());
+                        e.printStackTrace();
+                        if (operation.player.isOnline()) {
+                            operation.player.sendMessage(DungeonsConfig.getDungeonLoadFailedMessage());
+                        }
+                    } finally {
+                        isProcessing.set(false);
+                        if (operation.generation != operationGeneration.get() || MetadataHandler.shutdownRequested)
+                            return;
+                        // Process next operation after a short delay to let the server breathe
+                        new BukkitRunnable() {
+                            @Override
+                            public void run() {
+                                if (operation.generation != operationGeneration.get() || MetadataHandler.shutdownRequested)
+                                    return;
+                                processNextOperation();
+                            }
+                        }.runTaskLater(MetadataHandler.PLUGIN, 10L); // 0.5 second delay between operations
+                    }
+                }
+            }.runTask(MetadataHandler.PLUGIN);
+        });
+    }
+
+    private static void notifyQueuePositions() {
+        int position = 1;
+        for (WorldOperation op : operationQueue) {
+            if (op.player.isOnline()) {
+                op.player.sendMessage(DungeonsConfig.getDungeonPreparingQueueMessage().replace("$position", String.valueOf(position)));
+            }
+            position++;
+        }
+    }
+
+    /**
+     * Gets the current queue size.
+     */
+    public static int getQueueSize() {
+        return operationQueue.size() + (isProcessing.get() ? 1 : 0);
+    }
+
+    /**
+     * Clears the queue (used during plugin shutdown).
+     */
+    public static void shutdown() {
+        operationGeneration.incrementAndGet();
+        for (WorldOperation op : operationQueue) {
+            if (op.player.isOnline()) {
+                op.player.sendMessage(DungeonsConfig.getDungeonCancelledShutdownMessage());
+            }
+        }
+        operationQueue.clear();
+        isProcessing.set(false);
+    }
+
+    private record WorldOperation(
+            Player player,
+            Supplier<Boolean> asyncOperation,
+            Runnable syncOperation,
+            String operationName,
+            int generation
+    ) {}
+}

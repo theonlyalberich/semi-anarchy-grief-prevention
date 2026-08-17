@@ -1,0 +1,34 @@
+package com.magmaguy.elitemobs.powerstances;
+
+import com.magmaguy.elitemobs.entitytracker.EntityTracker;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
+import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityPickupItemEvent;
+import org.bukkit.event.entity.EntityPortalEvent;
+import org.bukkit.event.inventory.InventoryPickupItemEvent;
+
+/**
+ * Created by MagmaGuy on 14/07/2017.
+ */
+public class EffectEventHandlers implements Listener {
+
+    @EventHandler
+    public void playerPickupSafeguard(EntityPickupItemEvent event) {
+        if (EntityTracker.isVisualEffect(event.getItem()))
+            event.setCancelled(true);
+    }
+
+    @EventHandler(priority = EventPriority.LOWEST)
+    public void hopperPickupSafeguard(InventoryPickupItemEvent event) {
+        if (EntityTracker.isVisualEffect(event.getItem()))
+            event.setCancelled(true);
+    }
+
+    @EventHandler
+    public void portalPickupSafeguard(EntityPortalEvent event) {
+        if (EntityTracker.isVisualEffect(event.getEntity()) || EntityTracker.isEliteMob(event.getEntity()))
+            event.setCancelled(true);
+    }
+
+}

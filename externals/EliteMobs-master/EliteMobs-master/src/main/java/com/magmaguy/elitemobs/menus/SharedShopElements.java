@@ -1,0 +1,78 @@
+package com.magmaguy.elitemobs.menus;
+
+import com.magmaguy.elitemobs.MetadataHandler;
+import com.magmaguy.elitemobs.config.EconomySettingsConfig;
+import com.magmaguy.elitemobs.economy.EconomyHandler;
+import org.bukkit.Bukkit;
+import org.bukkit.Material;
+import org.bukkit.entity.Player;
+import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.scheduler.BukkitRunnable;
+
+public class SharedShopElements {
+
+    public static boolean itemNullPointerPrevention(InventoryClickEvent event) {
+        //Check if current item is valid
+        if (event.getCurrentItem() == null) return false;
+        if (event.getCurrentItem().getType().equals(Material.AIR)) return false;
+        return event.getCurrentItem().getItemMeta() != null;
+    }
+
+    public static void buyMessage(Player player, String itemDisplayName, double itemValue) {
+
+        new BukkitRunnable() {
+
+            @Override
+            public void run() {
+
+                player.sendMessage(
+                                EconomySettingsConfig.getShopBuyMessage()
+                                        .replace("$item_name", itemDisplayName)
+                                        .replace("$item_value", EconomyHandler.formatCurrency(itemValue))
+                                        .replace("$currency_name", EconomySettingsConfig.getCurrencyName()));
+
+                player.sendMessage(
+                                EconomySettingsConfig.getShopCurrentBalance()
+                                        .replace("$currency_amount", EconomyHandler.formatCurrency(EconomyHandler.checkCurrency(player.getUniqueId())))
+                                        .replace("$currency_name", EconomySettingsConfig.getCurrencyName()));
+
+
+            }
+
+
+        }.runTaskLater(Bukkit.getPluginManager().getPlugin(MetadataHandler.ELITE_MOBS), 2);
+
+    }
+
+    public static void insufficientFundsMessage(Player player, double itemValue) {
+
+        new BukkitRunnable() {
+
+            @Override
+            public void run() {
+
+                player.sendMessage(
+                                EconomySettingsConfig.getShopInsufficientFundsMessage()
+                                        .replace("$currency_name", EconomySettingsConfig.getCurrencyName()));
+
+                player.sendMessage(
+                                EconomySettingsConfig.getShopCurrentBalance()
+                                        .replace("$currency_amount", EconomyHandler.formatCurrency(EconomyHandler.checkCurrency(player.getUniqueId())))
+                                        .replace("$currency_name", EconomySettingsConfig.getCurrencyName()));
+
+                player.sendMessage(
+                                EconomySettingsConfig.getShopItemPrice()
+                                        .replace("$item_value", EconomyHandler.formatCurrency(itemValue))
+                                        .replace("$currency_name", EconomySettingsConfig.getCurrencyName()));
+
+            }
+
+
+        }.runTaskLater(Bukkit.getPluginManager().getPlugin(MetadataHandler.ELITE_MOBS), 2);
+
+        player.closeInventory();
+
+    }
+
+
+}

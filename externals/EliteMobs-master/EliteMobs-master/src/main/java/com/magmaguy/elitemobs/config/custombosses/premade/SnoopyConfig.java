@@ -1,0 +1,35 @@
+package com.magmaguy.elitemobs.config.custombosses.premade;
+
+import com.magmaguy.elitemobs.config.custombosses.CustomBossesConfigFields;
+import org.bukkit.Material;
+import org.bukkit.entity.EntityType;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+/**
+ * In the loving memory of Snoopy, the best boy
+ * January 2006 - January 2021
+ * Gone but not forgotten.
+ */
+public class SnoopyConfig extends CustomBossesConfigFields {
+    public SnoopyConfig() {
+        super("snoopy",
+                EntityType.WOLF,
+                true,
+                "&6{&4☠&6} <rainbow>Snoopy</rainbow>",
+                "dynamic");
+        setTimeout(3);
+        setHealthMultiplier(10);
+        setDamageMultiplier(2);
+        setPowers(new ArrayList<>(List.of("invulnerability_fire.lua")));
+        setDropsVanillaLoot(false);
+        setDropsEliteMobsLoot(false);
+        setTrails(Collections.singletonList(Material.BONE.toString()));
+        setOnDamagedMessages(Collections.singletonList("Woof!"));
+        setOnDamageMessages(Collections.singletonList("Woof!"));
+        setSpawnMessage("&aAn extremely rare Snoopy has been sighted!");
+        setAnnouncementPriority(3);
+    }
+}

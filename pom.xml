@@ -8,7 +8,7 @@
     <!-- Only change these per project -->
     <groupId>com.example</groupId>
     <artifactId>WonderPlugin</artifactId>
-    <version>1.2.5</version>
+    <version>1.3.0</version>
     <packaging>jar</packaging>
 
     <!-- Dynamic metadata -->
@@ -41,6 +41,10 @@
             <id>dmulloy2-repo</id>
             <url>https://repo.dmulloy2.net/repository/public/</url>
         </repository>
+        <repository>
+            <id>nexomc</id>
+            <url>https://repo.nexomc.com/releases</url>
+        </repository>
         <!-- Added central repository -->
         <repository>
             <id>central</id>
@@ -53,7 +57,7 @@
         <dependency>
             <groupId>io.papermc.paper</groupId>
             <artifactId>paper-api</artifactId>
-            <version>26.1.2.build.52-beta</version>
+            <version>26.2.build.87-stable</version>
             <scope>provided</scope>
         </dependency>
 
@@ -64,6 +68,7 @@
             <version>26.0.2</version>
             <scope>compile</scope>
         </dependency>
+
 
         <!-- GriefPrevention -->
         <dependency>
@@ -105,7 +110,7 @@
             <artifactId>bettermodel-bukkit-api</artifactId>
             <version>3.3.0-SNAPSHOT</version>
             <scope>system</scope>
-            <systemPath>C:/Users/DarkSide/Downloads/bettermodel-3.3.0-SNAPSHOT-508-paper.jar</systemPath>
+            <systemPath>C:/Users/DarkSide/Downloads/bettermodel-3.3.0-SNAPSHOT-510-paper.jar</systemPath>
         </dependency>
     </dependencies>
 
