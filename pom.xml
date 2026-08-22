@@ -5,13 +5,11 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <!-- Only change these per project -->
     <groupId>com.example</groupId>
-    <artifactId>WonderPlugin</artifactId>
-    <version>1.3.0</version>
+    <artifactId>anarchygrief</artifactId>
+    <version>0.0.3</version>
     <packaging>jar</packaging>
 
-    <!-- Dynamic metadata -->
     <name>${project.artifactId}</name>
     <description>${project.artifactId} plugin project</description>
     <url>https://example.com/${project.artifactId}</url>
@@ -21,7 +19,7 @@
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <maven.build.timestamp.format>yyyyMMdd-HHmmss</maven.build.timestamp.format>
-        <state>work</state> <!-- save/work -->
+        <state>work</state>
     </properties>
 
     <repositories>
@@ -42,13 +40,24 @@
             <url>https://repo.dmulloy2.net/repository/public/</url>
         </repository>
         <repository>
-            <id>nexomc</id>
+            <id>nexomc-releases</id>
             <url>https://repo.nexomc.com/releases</url>
         </repository>
-        <!-- Added central repository -->
         <repository>
             <id>central</id>
             <url>https://repo.maven.apache.org/maven2</url>
+        </repository>
+<!-- mythicmobs -->
+        <repository>
+            <id>nexus</id>
+            <name>Lumine Releases</name>
+            <url>https://mvn.lumine.io/repository/maven-public/</url>
+        </repository>
+
+        <!-- Libby (AlessioDP fork) -->
+        <repository>
+            <id>alessiodp-releases</id>
+            <url>https://repo.alessiodp.com/releases/</url>
         </repository>
     </repositories>
 
@@ -69,57 +78,34 @@
             <scope>compile</scope>
         </dependency>
 
-
         <!-- GriefPrevention -->
         <dependency>
             <groupId>com.github.GriefPrevention</groupId>
             <artifactId>GriefPrevention</artifactId>
-            <version>16.18.2</version>
+            <version>16.18.7</version>
             <scope>provided</scope>
         </dependency>
 
-        <!-- CoreProtect API -->
+
+        <!-- Triumph GUI via JitPack -->
         <dependency>
-            <groupId>net.coreprotect</groupId>
-            <artifactId>coreprotect</artifactId>
-            <version>24.0</version>
-            <scope>system</scope>
-            <systemPath>C:/Users/DarkSide/Downloads/CoreProtect-24.0.jar</systemPath>
+            <groupId>dev.triumphteam</groupId>
+            <artifactId>triumph-gui</artifactId>
+            <version>3.1.13</version>
         </dependency>
 
+        <!-- Libby (AlessioDP fork) -->
         <dependency>
-            <groupId>fr.holyseb</groupId>
-            <artifactId>WonderPVP</artifactId>
-            <version>1.1.2</version>
-            <scope>system</scope>
-            <systemPath>C:/Users/DarkSide/Downloads/WonderPVP.jar</systemPath>
-        </dependency>
-
-        <!-- ProtocolLib -->
-        <dependency>
-            <groupId>com.comphenix.protocol</groupId>
-            <artifactId>ProtocolLib</artifactId>
-            <version>4.10.0</version>
-            <scope>system</scope>
-            <systemPath>C:/Users/DarkSide/Downloads/ProtocolLib.jar</systemPath>
-        </dependency>
-
-        <!-- BetterModel Bukkit API (system path) -->
-        <dependency>
-            <groupId>io.github.toxicity188</groupId>
-            <artifactId>bettermodel-bukkit-api</artifactId>
-            <version>3.3.0-SNAPSHOT</version>
-            <scope>system</scope>
-            <systemPath>C:/Users/DarkSide/Downloads/bettermodel-3.3.0-SNAPSHOT-510-paper.jar</systemPath>
+            <groupId>net.byteflux</groupId>
+            <artifactId>libby-bukkit</artifactId>
+            <version>1.3.2</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 
     <build>
-        <!-- JAR name will be artifactId -->
         <finalName>${project.artifactId}</finalName>
-
         <plugins>
-            <!-- Compiler plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -130,7 +116,6 @@
                 </configuration>
             </plugin>
 
-            <!-- Jar plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
@@ -142,7 +127,6 @@
                 </configuration>
             </plugin>
 
-            <!-- AntRun plugin: zip entire project excluding target and zips -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-antrun-plugin</artifactId>
@@ -174,7 +158,6 @@
         <profile>
             <id>save</id>
             <activation>
-                <!-- Always active by default -->
                 <activeByDefault>true</activeByDefault>
             </activation>
             <build>
@@ -189,15 +172,12 @@
                                 <phase>package</phase>
                                 <configuration>
                                     <target>
-                                        <!-- Copy JAR to plugins folder -->
                                         <copy file="${project.build.directory}/${project.build.finalName}.jar"
-                                              todir="C:/files/plugins"
+                                              todir="E:/files/plugins"
                                               overwrite="true"/>
-
-                                        <!-- Copy ZIP to source/<artifactId> folder -->
-                                        <mkdir dir="C:/source/${project.artifactId}"/>
+                                        <mkdir dir="E:/source/${project.artifactId}"/>
                                         <copy file="${project.basedir}/${project.artifactId}-${project.version}.${maven.build.timestamp}.zip"
-                                              todir="C:/source/${project.artifactId}"
+                                              todir="E:/source/${project.artifactId}"
                                               overwrite="true"/>
                                     </target>
                                 </configuration>
