@@ -1,6 +1,7 @@
 package com.alb.anarchygrief.listeners;
 
 import com.alb.anarchygrief.triggers.DisableProtection;
+import com.alb.anarchygrief.triggers.EnableProtection;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -16,21 +17,22 @@ public class PlayerConnectionListener implements Listener {
     private final ConnectionHandler handler;
     private final JavaPlugin plugin;
     private final DisableProtection disabler;
-    private final int delayMinutes;
+    private final EnableProtection enabler;
+    private final int loginDelayMinutes;
 
-    // Track pending restore tasks per player (still here for future restore logic)
     private final Map<UUID, ScheduledTask> restoreTasks = new HashMap<>();
-    // Track players who already have a protection change scheduled
     private final Set<UUID> activeChanges = new HashSet<>();
 
     public PlayerConnectionListener(ConnectionHandler handler,
                                     JavaPlugin plugin,
                                     DisableProtection disabler,
-                                    int delayMinutes) {
+                                    EnableProtection enabler,
+                                    int loginDelayMinutes) {
         this.handler = handler;
         this.plugin = plugin;
         this.disabler = disabler;
-        this.delayMinutes = delayMinutes;
+        this.enabler = enabler;
+        this.loginDelayMinutes = loginDelayMinutes;
     }
 
     @EventHandler
@@ -38,7 +40,6 @@ public class PlayerConnectionListener implements Listener {
         Player player = event.getPlayer();
         UUID uuid = player.getUniqueId();
 
-        // Cancel pending restore if player relogs before it runs
         if (restoreTasks.containsKey(uuid)) {
             restoreTasks.get(uuid).cancel();
             restoreTasks.remove(uuid);
@@ -52,11 +53,11 @@ public class PlayerConnectionListener implements Listener {
 
         handler.onLogin(player);
 
-        // Folia-safe scheduling
+        // Folia-safe scheduling: disable protection after configured login delay
         plugin.getServer().getScheduler().runDelayed(plugin, task -> {
             disabler.disableProtectionAndEnableExplosions(uuid);
             activeChanges.add(uuid);
-        }, delayMinutes * 60L * 20L);
+        }, loginDelayMinutes * 60L * 20L);
     }
 
     @EventHandler
@@ -66,11 +67,11 @@ public class PlayerConnectionListener implements Listener {
 
         handler.onLogout(player);
 
-        // Restore logic still exists but untouched, per your request
         int restoreDelayMinutes = plugin.getConfig().getInt("restoreDelayMinutes", 5);
 
+        // Folia-safe scheduling: enable protection after configured restore delay
         ScheduledTask task = plugin.getServer().getScheduler().runDelayed(plugin, scheduledTask -> {
-            // Placeholder: restore logic not removed yet
+            enabler.enableProtectionAndDisableExplosions(uuid);
             restoreTasks.remove(uuid);
             activeChanges.remove(uuid);
         }, restoreDelayMinutes * 60L * 20L);
