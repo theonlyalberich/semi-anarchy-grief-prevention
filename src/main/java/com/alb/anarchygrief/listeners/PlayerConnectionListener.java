@@ -21,7 +21,7 @@ public class PlayerConnectionListener implements Listener {
     private final int loginDelayMinutes;
 
     private final Map<UUID, ScheduledTask> restoreTasks = new HashMap<>();
-    private final Set<UUID> activeChanges = new HashSet<>();
+    private final Map<UUID, ScheduledTask> unprotectTasks = new HashMap<>();
 
     public PlayerConnectionListener(ConnectionHandler handler,
                                     JavaPlugin plugin,
@@ -40,24 +40,26 @@ public class PlayerConnectionListener implements Listener {
         Player player = event.getPlayer();
         UUID uuid = player.getUniqueId();
 
+        // Cancel pending restore if player relogs before it executes
         if (restoreTasks.containsKey(uuid)) {
             restoreTasks.get(uuid).cancel();
             restoreTasks.remove(uuid);
-            activeChanges.remove(uuid);
-            return;
         }
 
-        if (activeChanges.contains(uuid)) {
+        // If an unprotect schedule is already pending, do not queue another
+        if (unprotectTasks.containsKey(uuid)) {
             return;
         }
 
         handler.onLogin(player);
 
-        // Folia-safe scheduling: disable protection after configured login delay
-        plugin.getServer().getScheduler().runDelayed(plugin, task -> {
+        // Schedule unprotect after configured login delay
+        ScheduledTask task = plugin.getServer().getScheduler().runDelayed(plugin, scheduledTask -> {
             disabler.disableProtectionAndEnableExplosions(uuid);
-            activeChanges.add(uuid);
+            unprotectTasks.remove(uuid);
         }, loginDelayMinutes * 60L * 20L);
+
+        unprotectTasks.put(uuid, task);
     }
 
     @EventHandler
@@ -69,11 +71,20 @@ public class PlayerConnectionListener implements Listener {
 
         int restoreDelayMinutes = plugin.getConfig().getInt("restoreDelayMinutes", 5);
 
-        // Folia-safe scheduling: enable protection after configured restore delay
+        // If an unprotect schedule is already pending, do not cancel or replace it
+        if (unprotectTasks.containsKey(uuid)) {
+            return;
+        }
+
+        // If a restore schedule is already pending, do not queue another
+        if (restoreTasks.containsKey(uuid)) {
+            return;
+        }
+
+        // Schedule restore after configured delay
         ScheduledTask task = plugin.getServer().getScheduler().runDelayed(plugin, scheduledTask -> {
             enabler.enableProtectionAndDisableExplosions(uuid);
             restoreTasks.remove(uuid);
-            activeChanges.remove(uuid);
         }, restoreDelayMinutes * 60L * 20L);
 
         restoreTasks.put(uuid, task);
