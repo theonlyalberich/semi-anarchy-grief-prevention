@@ -38,8 +38,13 @@ public class DisableProtection {
 
         // Modify each claim
         for (Claim claim : playerClaims) {
+            // Disable grief prevention - allow public to build
             claim.setPermission("public", ClaimPermission.Build);
+
+            // Enable explosions
             claim.areExplosivesAllowed = true;
+
+            // Save changes
             dataStore.saveClaim(claim);
         }
     }
