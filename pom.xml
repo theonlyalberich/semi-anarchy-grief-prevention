@@ -7,7 +7,7 @@
 
     <groupId>com.example</groupId>
     <artifactId>anarchygrief</artifactId>
-    <version>0.0.3</version>
+    <version>1.0.0</version>
     <packaging>jar</packaging>
 
     <name>${project.artifactId}</name>
@@ -47,7 +47,7 @@
             <id>central</id>
             <url>https://repo.maven.apache.org/maven2</url>
         </repository>
-<!-- mythicmobs -->
+        <!-- mythicmobs -->
         <repository>
             <id>nexus</id>
             <name>Lumine Releases</name>
@@ -69,7 +69,6 @@
             <version>26.1.2.build.8-stable</version>
             <scope>provided</scope>
         </dependency>
-
         <!-- JetBrains annotations -->
         <dependency>
             <groupId>org.jetbrains</groupId>
@@ -85,7 +84,6 @@
             <version>16.18.7</version>
             <scope>provided</scope>
         </dependency>
-
 
         <!-- Triumph GUI via JitPack -->
         <dependency>
@@ -126,69 +124,6 @@
                     </archive>
                 </configuration>
             </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-antrun-plugin</artifactId>
-                <version>3.1.0</version>
-                <executions>
-                    <execution>
-                        <id>zip-project</id>
-                        <phase>package</phase>
-                        <configuration>
-                            <target>
-                                <zip destfile="${project.basedir}/${project.artifactId}-${project.version}.${maven.build.timestamp}.zip">
-                                    <fileset dir="${project.basedir}">
-                                        <exclude name="target/**"/>
-                                        <exclude name="*.zip"/>
-                                    </fileset>
-                                </zip>
-                            </target>
-                        </configuration>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
         </plugins>
     </build>
-
-    <profiles>
-        <profile>
-            <id>save</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-antrun-plugin</artifactId>
-                        <version>3.1.0</version>
-                        <executions>
-                            <execution>
-                                <id>copy-to-external</id>
-                                <phase>package</phase>
-                                <configuration>
-                                    <target>
-                                        <copy file="${project.build.directory}/${project.build.finalName}.jar"
-                                              todir="E:/files/plugins"
-                                              overwrite="true"/>
-                                        <mkdir dir="E:/source/${project.artifactId}"/>
-                                        <copy file="${project.basedir}/${project.artifactId}-${project.version}.${maven.build.timestamp}.zip"
-                                              todir="E:/source/${project.artifactId}"
-                                              overwrite="true"/>
-                                    </target>
-                                </configuration>
-                                <goals>
-                                    <goal>run</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
 </project>
