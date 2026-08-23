@@ -1,9 +1,9 @@
 package com.alb.anarchygrief;
 
-import com.alb.anarchygrief.backuphandelers.ClaimProtectionBackup;
 import com.alb.anarchygrief.listeners.ConnectionHandler;
 import com.alb.anarchygrief.listeners.PlayerConnectionListener;
 import com.alb.anarchygrief.triggers.DisableProtection;
+import com.alb.anarchygrief.triggers.EnableProtection;
 import me.ryanhamshire.GriefPrevention.GriefPrevention;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -35,16 +35,16 @@ public class AnarchyGrief extends JavaPlugin implements ConnectionHandler {
         }
 
         // Managers
-        ClaimProtectionBackup backup = new ClaimProtectionBackup();
         DisableProtection disabler = new DisableProtection(gp.dataStore);
+        EnableProtection enabler = new EnableProtection(gp.dataStore);
 
         // Configurable delays
         int loginDelayMinutes = getConfig().getInt("login-delay-minutes", 5);
         int restoreDelayMinutes = getConfig().getInt("restoreDelayMinutes", 5);
 
-        // Register listener with both delays
+        // Register listener with both managers
         getServer().getPluginManager().registerEvents(
-                new PlayerConnectionListener(this, this, backup, disabler, loginDelayMinutes), this
+                new PlayerConnectionListener(this, this, disabler, enabler, loginDelayMinutes), this
         );
 
         getLogger().info("AnarchyGrief listener enabled. Login delay=" + loginDelayMinutes +
