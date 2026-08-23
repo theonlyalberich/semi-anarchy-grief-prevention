@@ -62,11 +62,11 @@
     </repositories>
 
     <dependencies>
-        <!-- Paper API build -->
+        <!-- folia API build -->
         <dependency>
-            <groupId>io.papermc.paper</groupId>
-            <artifactId>paper-api</artifactId>
-            <version>26.2.build.87-stable</version>
+            <groupId>dev.folia</groupId>
+            <artifactId>folia-api</artifactId>
+            <version>26.1.2.build.8-stable</version>
             <scope>provided</scope>
         </dependency>
 
