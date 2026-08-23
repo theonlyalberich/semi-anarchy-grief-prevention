@@ -3,7 +3,7 @@ version: 0.0.3
 main: com.alb.anarchygrief.AnarchyGrief
 author: alb
 api-version: 1.26
-#folia-supported: true #<- to be implemented once paper plug works
+folia-supported: true #<- to be implemented once paper plug works
 description: Protection of offline player claims.
 
 
