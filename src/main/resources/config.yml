@@ -1,1 +1,5 @@
+# Delay before disabling protections after login (minutes)
 login-delay-minutes: 5
+
+# Delay before restoring protections after logout (minutes)
+restoreDelayMinutes: 5
