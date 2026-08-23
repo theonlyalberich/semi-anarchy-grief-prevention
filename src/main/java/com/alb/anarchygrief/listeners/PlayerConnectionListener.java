@@ -2,13 +2,13 @@ package com.alb.anarchygrief.listeners;
 
 import com.alb.anarchygrief.triggers.DisableProtection;
 import com.alb.anarchygrief.triggers.EnableProtection;
+import io.papermc.paper.threadedregions.scheduler.ScheduledTask; // Folia scheduler
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.scheduler.ScheduledTask;
 
 import java.util.*;
 
@@ -46,18 +46,23 @@ public class PlayerConnectionListener implements Listener {
             restoreTasks.remove(uuid);
         }
 
-        // If an unprotect schedule is already pending, do not queue another
+        // Prevent double unprotect schedules
         if (unprotectTasks.containsKey(uuid)) {
             return;
         }
 
         handler.onLogin(player);
 
-        // Schedule unprotect after configured login delay
-        ScheduledTask task = plugin.getServer().getScheduler().runDelayed(plugin, scheduledTask -> {
-            disabler.disableProtectionAndEnableExplosions(uuid);
-            unprotectTasks.remove(uuid);
-        }, loginDelayMinutes * 60L * 20L);
+        // Folia-safe scheduling: tied to player entity
+        ScheduledTask task = player.getScheduler().runDelayed(
+                plugin,
+                scheduledTask -> {
+                    disabler.disableProtectionAndEnableExplosions(uuid);
+                    unprotectTasks.remove(uuid);
+                },
+                () -> unprotectTasks.remove(uuid),
+                loginDelayMinutes * 60L * 20L
+        );
 
         unprotectTasks.put(uuid, task);
     }
@@ -71,21 +76,23 @@ public class PlayerConnectionListener implements Listener {
 
         int restoreDelayMinutes = plugin.getConfig().getInt("restoreDelayMinutes", 5);
 
-        // If an unprotect schedule is already pending, do not cancel or replace it
+        // Prevent double schedules
         if (unprotectTasks.containsKey(uuid)) {
             return;
         }
-
-        // If a restore schedule is already pending, do not queue another
         if (restoreTasks.containsKey(uuid)) {
             return;
         }
 
-        // Schedule restore after configured delay
-        ScheduledTask task = plugin.getServer().getScheduler().runDelayed(plugin, scheduledTask -> {
-            enabler.enableProtectionAndDisableExplosions(uuid);
-            restoreTasks.remove(uuid);
-        }, restoreDelayMinutes * 60L * 20L);
+        // Folia-safe scheduling: use GlobalRegionScheduler (player entity is gone)
+        ScheduledTask task = plugin.getServer().getGlobalRegionScheduler().runDelayed(
+                plugin,
+                scheduledTask -> {
+                    enabler.enableProtectionAndDisableExplosions(uuid);
+                    restoreTasks.remove(uuid);
+                },
+                restoreDelayMinutes * 60L * 20L
+        );
 
         restoreTasks.put(uuid, task);
     }
