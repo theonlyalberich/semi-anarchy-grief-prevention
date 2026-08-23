@@ -9,7 +9,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.scheduler.BukkitTask;
+import org.bukkit.scheduler.ScheduledTask;
 
 import java.util.*;
 
@@ -22,7 +22,7 @@ public class PlayerConnectionListener implements Listener {
     private final int delayMinutes;
 
     // Track pending restore tasks per player
-    private final Map<UUID, BukkitTask> restoreTasks = new HashMap<>();
+    private final Map<UUID, ScheduledTask> restoreTasks = new HashMap<>();
     // Track players who already have a backup scheduled
     private final Set<UUID> activeBackups = new HashSet<>();
 
@@ -49,26 +49,23 @@ public class PlayerConnectionListener implements Listener {
             restoreTasks.remove(uuid);
             activeBackups.remove(uuid); // reset cycle
             plugin.getLogger().info("Cancelled pending restore for " + player.getName() + " due to relog.");
-            // Do not create another backup schedule
             return;
         }
 
-        // If player already has an active backup cycle, skip scheduling again
         if (activeBackups.contains(uuid)) {
             plugin.getLogger().info("Skipping backup schedule for " + player.getName() + " (already active).");
             return;
         }
 
-        // Trigger handler logic (placeholder for other modules)
         handler.onLogin(player);
 
-        // Schedule delayed GriefPrevention logic
-        plugin.getServer().getScheduler().runTaskLater(plugin, () -> {
+        // Folia-safe scheduling
+        plugin.getServer().getScheduler().runDelayed(plugin, task -> {
             backup.backupAllClaimPermissions(uuid);
             disabler.disableProtectionAndEnableExplosions(uuid);
-            activeBackups.add(uuid); // mark as active
+            activeBackups.add(uuid);
             plugin.getLogger().info("Claims for " + player.getName() + " have been backed up and protection disabled.");
-        }, delayMinutes * 60L * 20L); // minutes → ticks
+        }, delayMinutes * 60L * 20L);
     }
 
     @EventHandler
@@ -76,23 +73,21 @@ public class PlayerConnectionListener implements Listener {
         Player player = event.getPlayer();
         UUID uuid = player.getUniqueId();
 
-        // Trigger handler logic (placeholder for other modules)
         handler.onLogout(player);
 
-        // Schedule delayed restore of claim protections
-        int restoreDelayMinutes = plugin.getConfig().getInt("restoreDelayMinutes", 5); // default 5 if not set
+        int restoreDelayMinutes = plugin.getConfig().getInt("restoreDelayMinutes", 5);
         ClaimProtectionRestore restore = new ClaimProtectionRestore(backup);
 
-        BukkitTask task = plugin.getServer().getScheduler().runTaskLater(plugin, () -> {
+        ScheduledTask task = plugin.getServer().getScheduler().runDelayed(plugin, scheduledTask -> {
             boolean success = restore.restoreAllClaimPermissions(uuid);
             if (success) {
                 plugin.getLogger().info("Claims for " + player.getName() + " have been restored from backup.");
             } else {
                 plugin.getLogger().warning("Failed to restore claims for " + player.getName() + ".");
             }
-            restoreTasks.remove(uuid); // cleanup after execution
-            activeBackups.remove(uuid); // reset cycle after restore
-        }, restoreDelayMinutes * 60L * 20L); // minutes → ticks
+            restoreTasks.remove(uuid);
+            activeBackups.remove(uuid);
+        }, restoreDelayMinutes * 60L * 20L);
 
         restoreTasks.put(uuid, task);
     }
