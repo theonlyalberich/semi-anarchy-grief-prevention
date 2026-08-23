@@ -34,17 +34,21 @@ public class AnarchyGrief extends JavaPlugin implements ConnectionHandler {
             return;
         }
 
+        // Managers
         ClaimProtectionBackup backup = new ClaimProtectionBackup();
         DisableProtection disabler = new DisableProtection(gp.dataStore);
 
-        int delayMinutes = getConfig().getInt("login-delay-minutes", 5);
+        // Configurable delays
+        int loginDelayMinutes = getConfig().getInt("login-delay-minutes", 5);
+        int restoreDelayMinutes = getConfig().getInt("restoreDelayMinutes", 5);
 
-        // Pass both ConnectionHandler (this) and plugin (this)
+        // Register listener with both delays
         getServer().getPluginManager().registerEvents(
-                new PlayerConnectionListener(this, this, backup, disabler, delayMinutes), this
+                new PlayerConnectionListener(this, this, backup, disabler, loginDelayMinutes), this
         );
 
-        getLogger().info("AnarchyGrief listener enabled.");
+        getLogger().info("AnarchyGrief listener enabled. Login delay=" + loginDelayMinutes +
+                "m, Restore delay=" + restoreDelayMinutes + "m");
     }
 
     @Override
