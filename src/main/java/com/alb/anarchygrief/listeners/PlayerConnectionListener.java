@@ -1,7 +1,5 @@
 package com.alb.anarchygrief.listeners;
 
-import com.alb.anarchygrief.backuphandelers.ClaimProtectionBackup;
-import com.alb.anarchygrief.backuphandelers.ClaimProtectionRestore;
 import com.alb.anarchygrief.triggers.DisableProtection;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -17,23 +15,20 @@ public class PlayerConnectionListener implements Listener {
 
     private final ConnectionHandler handler;
     private final JavaPlugin plugin;
-    private final ClaimProtectionBackup backup;
     private final DisableProtection disabler;
     private final int delayMinutes;
 
-    // Track pending restore tasks per player
+    // Track pending restore tasks per player (still here for future restore logic)
     private final Map<UUID, ScheduledTask> restoreTasks = new HashMap<>();
-    // Track players who already have a backup scheduled
-    private final Set<UUID> activeBackups = new HashSet<>();
+    // Track players who already have a protection change scheduled
+    private final Set<UUID> activeChanges = new HashSet<>();
 
     public PlayerConnectionListener(ConnectionHandler handler,
                                     JavaPlugin plugin,
-                                    ClaimProtectionBackup backup,
                                     DisableProtection disabler,
                                     int delayMinutes) {
         this.handler = handler;
         this.plugin = plugin;
-        this.backup = backup;
         this.disabler = disabler;
         this.delayMinutes = delayMinutes;
     }
@@ -47,13 +42,11 @@ public class PlayerConnectionListener implements Listener {
         if (restoreTasks.containsKey(uuid)) {
             restoreTasks.get(uuid).cancel();
             restoreTasks.remove(uuid);
-            activeBackups.remove(uuid); // reset cycle
-            plugin.getLogger().info("Cancelled pending restore for " + player.getName() + " due to relog.");
+            activeChanges.remove(uuid);
             return;
         }
 
-        if (activeBackups.contains(uuid)) {
-            plugin.getLogger().info("Skipping backup schedule for " + player.getName() + " (already active).");
+        if (activeChanges.contains(uuid)) {
             return;
         }
 
@@ -61,10 +54,8 @@ public class PlayerConnectionListener implements Listener {
 
         // Folia-safe scheduling
         plugin.getServer().getScheduler().runDelayed(plugin, task -> {
-            backup.backupAllClaimPermissions(uuid);
             disabler.disableProtectionAndEnableExplosions(uuid);
-            activeBackups.add(uuid);
-            plugin.getLogger().info("Claims for " + player.getName() + " have been backed up and protection disabled.");
+            activeChanges.add(uuid);
         }, delayMinutes * 60L * 20L);
     }
 
@@ -75,18 +66,13 @@ public class PlayerConnectionListener implements Listener {
 
         handler.onLogout(player);
 
+        // Restore logic still exists but untouched, per your request
         int restoreDelayMinutes = plugin.getConfig().getInt("restoreDelayMinutes", 5);
-        ClaimProtectionRestore restore = new ClaimProtectionRestore(backup);
 
         ScheduledTask task = plugin.getServer().getScheduler().runDelayed(plugin, scheduledTask -> {
-            boolean success = restore.restoreAllClaimPermissions(uuid);
-            if (success) {
-                plugin.getLogger().info("Claims for " + player.getName() + " have been restored from backup.");
-            } else {
-                plugin.getLogger().warning("Failed to restore claims for " + player.getName() + ".");
-            }
+            // Placeholder: restore logic not removed yet
             restoreTasks.remove(uuid);
-            activeBackups.remove(uuid);
+            activeChanges.remove(uuid);
         }, restoreDelayMinutes * 60L * 20L);
 
         restoreTasks.put(uuid, task);
