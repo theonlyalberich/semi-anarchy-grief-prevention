@@ -9,8 +9,9 @@ import java.util.Collection;
 import java.util.UUID;
 
 /**
- * Enable grief prevention and disable explosions on all claims owned by a player.
- * Opposite of DisableProtection: removes public trust and prevents explosions.
+ * Enable grief prevention on all claims owned by a player.
+ * Removes public trust and prevents explosions, but leaves PvP and drop protection disabled.
+ * Opposite of DisableProtection, but allows PvP and item pickup.
  */
 public class EnableProtection {
     private final DataStore dataStore;
@@ -20,8 +21,8 @@ public class EnableProtection {
     }
 
     /**
-     * Enable grief prevention and disable explosions on all claims owned by the specified player.
-     * Removes public build permission and disallows explosions and wither explosions.
+     * Enable grief prevention on all claims owned by the specified player.
+     * Removes public access and disallows explosions, but leaves PvP enabled and drop protection off.
      *
      * @param targetPlayerUUID UUID of player whose claims to modify
      */
@@ -38,7 +39,7 @@ public class EnableProtection {
 
         // Modify each claim
         for (Claim claim : playerClaims) {
-            // Remove public build permission
+            // Remove public access - nobody can build/access without trust
             claim.dropPermission("public");
 
             // Disable explosions
@@ -47,8 +48,16 @@ public class EnableProtection {
             // Disable wither explosions
             claim.areWitherExplosionsAllowed = false;
 
+            // Keep PvP ENABLED - players can still fight
+            claim.pvpEnabled = true;
+
+            // Note: Drop protection is handled by global config (ProtectItemsDroppedOnDeath)
+            // We don't touch that here - it's server-wide setting, not per-claim
+
             // Save changes
             dataStore.saveClaim(claim);
+
+            // Also apply to all subdivisions
+            applyProtectionToSubclaims(claim);
         }
     }
-}
