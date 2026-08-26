@@ -21,7 +21,7 @@ public class EnableProtection {
 
     /**
      * Enable grief prevention and disable explosions on all claims owned by the specified player.
-     * Removes public build permission and disallows explosions.
+     * Removes public build permission and disallows explosions and wither explosions.
      *
      * @param targetPlayerUUID UUID of player whose claims to modify
      */
@@ -43,6 +43,9 @@ public class EnableProtection {
 
             // Disable explosions
             claim.areExplosivesAllowed = false;
+
+            // Disable wither explosions
+            claim.areWitherExplosionsAllowed = false;
 
             // Save changes
             dataStore.saveClaim(claim);
