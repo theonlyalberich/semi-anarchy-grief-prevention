@@ -2,6 +2,7 @@ package com.alb.anarchygrief;
 
 import com.alb.anarchygrief.listeners.ConnectionHandler;
 import com.alb.anarchygrief.listeners.PlayerConnectionListener;
+import com.alb.anarchygrief.listeners.ClaimResizeBlocker;
 import com.alb.anarchygrief.triggers.DisableProtection;
 import com.alb.anarchygrief.triggers.EnableProtection;
 import com.alb.anarchygrief.triggers.GlobalProtectionEnable;
@@ -13,18 +14,22 @@ public class AnarchyGrief extends JavaPlugin implements ConnectionHandler {
 
     @Override
     public void onLogin(Player player) {
-        // placeholder logic for login
         getLogger().info(player.getName() + " logged in (ConnectionHandler placeholder).");
     }
 
     @Override
     public void onLogout(Player player) {
-        // placeholder logic for logout
         getLogger().info(player.getName() + " logged out (ConnectionHandler placeholder).");
     }
 
     @Override
     public void onEnable() {
+        saveDefaultConfig();
+
+        // Ensure config folder and file exist
+        if (!getDataFolder().exists()) {
+            getDataFolder().mkdirs();
+        }
         saveDefaultConfig();
 
         // Get GriefPrevention datastore
@@ -48,12 +53,13 @@ public class AnarchyGrief extends JavaPlugin implements ConnectionHandler {
         globalEnabler.enableProtectionOnAllClaims();
         getLogger().info("Global protection enforced on startup.");
 
-        // Register listener with both managers
+        // Register listeners
         getServer().getPluginManager().registerEvents(
                 new PlayerConnectionListener(this, this, disabler, enabler, loginDelayMinutes), this
         );
+        getServer().getPluginManager().registerEvents(new ClaimResizeBlocker(), this);
 
-        getLogger().info("AnarchyGrief listener enabled. Login delay=" + loginDelayMinutes +
+        getLogger().info("AnarchyGrief listeners enabled. Login delay=" + loginDelayMinutes +
                 "m, Restore delay=" + restoreDelayMinutes + "m");
     }
 
