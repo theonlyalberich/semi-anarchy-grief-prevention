@@ -1,0 +1,33 @@
+package com.alb.anarchygrief.listeners;
+
+import me.ryanhamshire.GriefPrevention.GriefPrevention;
+import me.ryanhamshire.GriefPrevention.PlayerData;
+import org.bukkit.Material;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerInteractEvent;
+
+public class ClaimResizeBlocker implements Listener {
+
+    @EventHandler
+    public void onPlayerInteract(PlayerInteractEvent event) {
+        Player player = event.getPlayer();
+        Material toolInHand = player.getInventory().getItemInMainHand().getType();
+
+        // Check if this is the golden shovel (claim modification tool)
+        if (toolInHand != GriefPrevention.instance.config_claims_modificationTool) {
+            return;
+        }
+
+        PlayerData playerData = GriefPrevention.instance.dataStore.getPlayerData(player.getUniqueId());
+
+        // If player is resizing a claim and not an op, block it
+        if (playerData.claimResizing != null) {
+            if (!Blocker.canResizeClaim(player, playerData.claimResizing, playerData)) {
+                event.setCancelled(true);
+                player.sendMessage("§cOnly ops can resize claims.");
+            }
+        }
+    }
+}
