@@ -7,7 +7,7 @@ import java.util.Collection;
 
 /**
  * Ensures all claims are protected on server startup.
- * Removes public trust and disables explosions globally.
+ * Removes public trust and disables explosions globally on player claims only.
  */
 public class GlobalProtectionEnable {
 
@@ -18,12 +18,17 @@ public class GlobalProtectionEnable {
     }
 
     /**
-     * Iterate through all claims and enforce protection.
+     * Iterate through all claims and enforce protection on player claims only.
      */
     public void enableProtectionOnAllClaims() {
         Collection<Claim> allClaims = dataStore.getClaims();
 
         for (Claim claim : allClaims) {
+            // Skip admin claims
+            if (claim.isAdminClaim()) {
+                continue;
+            }
+
             // Remove public build permission
             claim.dropPermission("public");
 
